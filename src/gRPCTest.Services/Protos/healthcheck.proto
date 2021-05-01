@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "gprc/health/v1/health.proto";
+
+package SharedLogs.Api.Protos;
+
+option csharp_namespace = "SharedLogs.Api.Protos";
+
+service HealthCheck {
+  rpc Check(grpc.health.v1.HealthCheckRequest) returns (grpc.health.v1.HealthCheckResponse) {
+      option (google.api.http) = {
+          get: "/v1/healthcheck/{service}"
+      };
+  };
+
+  rpc Watch(grpc.health.v1.HealthCheckRequest) returns (stream grpc.health.v1.HealthCheckResponse);
+}

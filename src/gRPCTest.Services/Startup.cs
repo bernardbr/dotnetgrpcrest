@@ -29,6 +29,7 @@ namespace gRPCTest.Services
             {
                 endpoints.MapHealthChecks("/healthcheck");
                 endpoints.MapGrpcService<GreeterService>();
+                endpoints.MapGrpcService<HealthCheckService>();
                 endpoints.MapGet("/", async context =>
                 {
                     await context
@@ -50,6 +51,9 @@ namespace gRPCTest.Services
                 .AddGrpcHttpApi();
 
             services.AddSingleton<HealthServiceImpl>();
+            services.AddSingleton<HealthCheckService>();
+
+            services.AddHostedService<StatusService>();
 
             services
                 .AddSwaggerGen(c =>
