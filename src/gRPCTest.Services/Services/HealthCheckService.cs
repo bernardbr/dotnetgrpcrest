@@ -2,7 +2,7 @@
 using Grpc.Core;
 using Grpc.Health.V1;
 using Grpc.HealthCheck;
-using SharedLogs.Api.Protos;
+using gRPCTest.Services.Protos;
 
 namespace gRPCTest.Services.Services
 {
